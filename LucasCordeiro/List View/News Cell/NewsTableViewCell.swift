@@ -33,12 +33,16 @@ class NewsTableViewCell: UITableViewCell {
         descriptionLabelOutlet.text = newsDescription
 
         imageLoadingView.isHidden = false
+        imageLoadingView.loopAnimation = true
+        imageLoadingView.play()
+
         imageViewOutlet.sd_setImage(with: newsImageURL) { [weak self] (_, error, _, _) in
             guard let strongSelf = self else {
                 return
             }
 
             strongSelf.imageLoadingView.isHidden = false
+            strongSelf.imageLoadingView.stop()
 
             if error != nil {
                 strongSelf.imageViewOutlet.image = #imageLiteral(resourceName: "brokenImage")

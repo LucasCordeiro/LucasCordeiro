@@ -8,8 +8,16 @@
 
 import UIKit
 
-extension UITableViewCell {
-    func cellDefaultIdentifier() -> String {
+extension UIView {
+    
+    static func viewDescription() -> String {
+        return String(describing: self)
+    }
+}
+
+extension UIViewController {
+    
+    static func viewControllerDescription -> String {
         return String(describing: self)
     }
 }
