@@ -7,18 +7,42 @@
 //
 
 import UIKit
+import SDWebImage
+import Lottie
 
 class NewsTableViewCell: UITableViewCell {
 
+    //
+    // MARK: - Outlets -
+    @IBOutlet weak var imageViewOutlet: UIImageView!
+    @IBOutlet weak var titleLabelOutlet: UILabel!
+    @IBOutlet weak var descriptionLabelOutlet: UILabel!
+    @IBOutlet weak var imageLoadingView: LOTAnimationView!
+
+    //
+    // MARK: - Life Cycle Methods -
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    //
+    // MARK: - Configure Methods -
+    func configureCell(newsTitle: String, newsDescription: String, newsImageURL: URL?) {
 
-        // Configure the view for the selected state
+        titleLabelOutlet.text = newsTitle
+        descriptionLabelOutlet.text = newsDescription
+
+        imageLoadingView.isHidden = false
+        imageViewOutlet.sd_setImage(with: newsImageURL) { [weak self] (_, error, _, _) in
+            guard let strongSelf = self else {
+                return
+            }
+
+            strongSelf.imageLoadingView.isHidden = false
+
+            if error != nil {
+                strongSelf.imageViewOutlet.image = #imageLiteral(resourceName: "brokenImage")
+            }
+        }
     }
-
 }

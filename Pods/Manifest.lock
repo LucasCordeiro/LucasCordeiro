@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (5.0.0.beta.1)
   - EmptyDataSet-Swift (4.2.0)
+  - lottie-ios (2.5.2)
   - OHHTTPStubs/Core (6.1.0)
   - OHHTTPStubs/Default (6.1.0):
     - OHHTTPStubs/Core
@@ -27,6 +28,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 5.0.0.beta.1)
   - EmptyDataSet-Swift (~> 4.2.0)
+  - lottie-ios
   - OHHTTPStubs/Swift
   - RealmSwift
   - SDWebImage
@@ -36,6 +38,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - EmptyDataSet-Swift
+    - lottie-ios
     - OHHTTPStubs
     - Realm
     - RealmSwift
@@ -45,12 +48,13 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 2ef6d6c984c5d21c366e9b41a9ae7dfee2b67a44
   EmptyDataSet-Swift: 1fa0b35f530a35f852ecb2b53564728b0c300aaf
+  lottie-ios: 3fef45d3fabe63e3c7c2eb603dd64ddfffc73062
   OHHTTPStubs: 1e21c7d2c084b8153fc53d48400d8919d2d432d0
   Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
   RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
   SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
   SwiftLint: 47df60bdea6e7e902b193b6596db8683aafd86a3
 
-PODFILE CHECKSUM: 2defb931592e141721f605aa73db86118829fdbd
+PODFILE CHECKSUM: 6a41ee6f8cdf957557554d2ab142578ae4b6227b
 
 COCOAPODS: 1.5.3

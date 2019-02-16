@@ -10,5 +10,6 @@ target "LucasCordeiro" do
 	pod 'SwiftLint'
 	pod 'RealmSwift'
 	pod 'SDWebImage'
+	pod 'lottie-ios'
 end
 
