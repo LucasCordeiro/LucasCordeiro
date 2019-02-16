@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		96E31899DA3B611BFCA1EF29 /* Pods_LucasCordeiro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32F3234B27EA5BBF95BA8FC5 /* Pods_LucasCordeiro.framework */; };
 		AE7A117A22178D94009DE984 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7A117922178D94009DE984 /* AppDelegate.swift */; };
 		AE7A117C22178D94009DE984 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7A117B22178D94009DE984 /* ViewController.swift */; };
 		AE7A117F22178D94009DE984 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE7A117D22178D94009DE984 /* Main.storyboard */; };
@@ -34,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		32F3234B27EA5BBF95BA8FC5 /* Pods_LucasCordeiro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LucasCordeiro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FDAE9A91640B8B4BA77B01D /* Pods-LucasCordeiro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LucasCordeiro.release.xcconfig"; path = "Pods/Target Support Files/Pods-LucasCordeiro/Pods-LucasCordeiro.release.xcconfig"; sourceTree = "<group>"; };
 		AE7A117622178D94009DE984 /* LucasCordeiro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LucasCordeiro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE7A117922178D94009DE984 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE7A117B22178D94009DE984 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +50,7 @@
 		AE7A119522178D95009DE984 /* LucasCordeiroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LucasCordeiroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE7A119922178D95009DE984 /* LucasCordeiroUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LucasCordeiroUITests.swift; sourceTree = "<group>"; };
 		AE7A119B22178D95009DE984 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDC6D8B12344385362E7BF4C /* Pods-LucasCordeiro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LucasCordeiro.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LucasCordeiro/Pods-LucasCordeiro.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96E31899DA3B611BFCA1EF29 /* Pods_LucasCordeiro.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +79,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		713795CD506A5409370C31D6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				32F3234B27EA5BBF95BA8FC5 /* Pods_LucasCordeiro.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		88388B8C2EB37EABD10D8F0E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CDC6D8B12344385362E7BF4C /* Pods-LucasCordeiro.debug.xcconfig */,
+				5FDAE9A91640B8B4BA77B01D /* Pods-LucasCordeiro.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AE7A116D22178D94009DE984 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +103,8 @@
 				AE7A118D22178D95009DE984 /* LucasCordeiroTests */,
 				AE7A119822178D95009DE984 /* LucasCordeiroUITests */,
 				AE7A117722178D94009DE984 /* Products */,
+				88388B8C2EB37EABD10D8F0E /* Pods */,
+				713795CD506A5409370C31D6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,9 +156,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AE7A119E22178D95009DE984 /* Build configuration list for PBXNativeTarget "LucasCordeiro" */;
 			buildPhases = (
+				8438E541DF94D5C0594393EF /* [CP] Check Pods Manifest.lock */,
 				AE7A117222178D94009DE984 /* Sources */,
 				AE7A117322178D94009DE984 /* Frameworks */,
 				AE7A117422178D94009DE984 /* Resources */,
+				D1AFA311DA7485F08D3D2D49 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -250,6 +276,63 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8438E541DF94D5C0594393EF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LucasCordeiro-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D1AFA311DA7485F08D3D2D49 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-LucasCordeiro/Pods-LucasCordeiro-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/EmptyDataSet-Swift/EmptyDataSet_Swift.framework",
+				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EmptyDataSet_Swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LucasCordeiro/Pods-LucasCordeiro-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AE7A117222178D94009DE984 /* Sources */ = {
@@ -430,6 +513,7 @@
 		};
 		AE7A119F22178D95009DE984 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CDC6D8B12344385362E7BF4C /* Pods-LucasCordeiro.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -448,6 +532,7 @@
 		};
 		AE7A11A022178D95009DE984 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FDAE9A91640B8B4BA77B01D /* Pods-LucasCordeiro.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -1,0 +1,56 @@
+PODS:
+  - Alamofire (5.0.0.beta.1)
+  - EmptyDataSet-Swift (4.2.0)
+  - OHHTTPStubs/Core (6.1.0)
+  - OHHTTPStubs/Default (6.1.0):
+    - OHHTTPStubs/Core
+    - OHHTTPStubs/JSON
+    - OHHTTPStubs/NSURLSession
+    - OHHTTPStubs/OHPathHelpers
+  - OHHTTPStubs/JSON (6.1.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/NSURLSession (6.1.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/OHPathHelpers (6.1.0)
+  - OHHTTPStubs/Swift (6.1.0):
+    - OHHTTPStubs/Default
+  - Realm (3.13.1):
+    - Realm/Headers (= 3.13.1)
+  - Realm/Headers (3.13.1)
+  - RealmSwift (3.13.1):
+    - Realm (= 3.13.1)
+  - SDWebImage (4.4.3):
+    - SDWebImage/Core (= 4.4.3)
+  - SDWebImage/Core (4.4.3)
+  - SwiftLint (0.29.2)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.0.0.beta.1)
+  - EmptyDataSet-Swift (~> 4.2.0)
+  - OHHTTPStubs/Swift
+  - RealmSwift
+  - SDWebImage
+  - SwiftLint
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - EmptyDataSet-Swift
+    - OHHTTPStubs
+    - Realm
+    - RealmSwift
+    - SDWebImage
+    - SwiftLint
+
+SPEC CHECKSUMS:
+  Alamofire: 2ef6d6c984c5d21c366e9b41a9ae7dfee2b67a44
+  EmptyDataSet-Swift: 1fa0b35f530a35f852ecb2b53564728b0c300aaf
+  OHHTTPStubs: 1e21c7d2c084b8153fc53d48400d8919d2d432d0
+  Realm: 50071da38fe079e0735e47c9f2eae738c68c5996
+  RealmSwift: 8a1e6a02b7a08cd17a31e3115143fb69fe5f3fb9
+  SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
+  SwiftLint: 47df60bdea6e7e902b193b6596db8683aafd86a3
+
+PODFILE CHECKSUM: 92371594b2c934789711595713d75a2e8d3c5259
+
+COCOAPODS: 1.5.3
