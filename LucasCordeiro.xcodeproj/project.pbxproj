@@ -18,6 +18,10 @@
 		AE7A11B122178FD1009DE984 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7A11AF22178FD1009DE984 /* NewsTableViewCell.swift */; };
 		AE7A11B222178FD1009DE984 /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7A11B022178FD1009DE984 /* NewsTableViewCell.xib */; };
 		AE7A11B422179046009DE984 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7A11B322179046009DE984 /* ListViewModel.swift */; };
+		AE7A11B72217945A009DE984 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7A11B62217945A009DE984 /* APIRouter.swift */; };
+		AE7A11B92217946D009DE984 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7A11B82217946D009DE984 /* APIClient.swift */; };
+		AE7A11BB22179704009DE984 /* ConstantCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7A11BA22179704009DE984 /* ConstantCenter.swift */; };
+		AE7A11BF2218350C009DE984 /* NewsCM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7A11BE2218350C009DE984 /* NewsCM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +60,10 @@
 		AE7A11AF22178FD1009DE984 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		AE7A11B022178FD1009DE984 /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
 		AE7A11B322179046009DE984 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		AE7A11B62217945A009DE984 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		AE7A11B82217946D009DE984 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		AE7A11BA22179704009DE984 /* ConstantCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantCenter.swift; sourceTree = "<group>"; };
+		AE7A11BE2218350C009DE984 /* NewsCM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCM.swift; sourceTree = "<group>"; };
 		CDC6D8B12344385362E7BF4C /* Pods-LucasCordeiro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LucasCordeiro.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LucasCordeiro/Pods-LucasCordeiro.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,7 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				AE7A11A822178F11009DE984 /* List View */,
-				AE7A118222178D95009DE984 /* LaunchScreen.storyboard */,
+				AE7A11B522179449009DE984 /* Network */,
+				AE7A11BC22183486009DE984 /* Models */,
 				AE7A11A722178EE8009DE984 /* Supporting Files */,
 			);
 			path = LucasCordeiro;
@@ -155,9 +164,11 @@
 		AE7A11A722178EE8009DE984 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AE7A118222178D95009DE984 /* LaunchScreen.storyboard */,
 				AE7A117922178D94009DE984 /* AppDelegate.swift */,
-				AE7A118022178D95009DE984 /* Assets.xcassets */,
+				AE7A11BA22179704009DE984 /* ConstantCenter.swift */,
 				AE7A118522178D95009DE984 /* Info.plist */,
+				AE7A118022178D95009DE984 /* Assets.xcassets */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -190,6 +201,31 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		AE7A11B522179449009DE984 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				AE7A11B62217945A009DE984 /* APIRouter.swift */,
+				AE7A11B82217946D009DE984 /* APIClient.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		AE7A11BC22183486009DE984 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AE7A11BD221834F1009DE984 /* Component Model */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AE7A11BD221834F1009DE984 /* Component Model */ = {
+			isa = PBXGroup;
+			children = (
+				AE7A11BE2218350C009DE984 /* NewsCM.swift */,
+			);
+			path = "Component Model";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -202,6 +238,7 @@
 				AE7A117322178D94009DE984 /* Frameworks */,
 				AE7A117422178D94009DE984 /* Resources */,
 				D1AFA311DA7485F08D3D2D49 /* [CP] Embed Pods Frameworks */,
+				AE7A11C022183547009DE984 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -342,6 +379,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		AE7A11C022183547009DE984 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 		D1AFA311DA7485F08D3D2D49 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -382,9 +436,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE7A11AA22178F5C009DE984 /* ListViewController.swift in Sources */,
+				AE7A11B72217945A009DE984 /* APIRouter.swift in Sources */,
 				AE7A117A22178D94009DE984 /* AppDelegate.swift in Sources */,
 				AE7A11B422179046009DE984 /* ListViewModel.swift in Sources */,
+				AE7A11BF2218350C009DE984 /* NewsCM.swift in Sources */,
 				AE7A11B122178FD1009DE984 /* NewsTableViewCell.swift in Sources */,
+				AE7A11B92217946D009DE984 /* APIClient.swift in Sources */,
+				AE7A11BB22179704009DE984 /* ConstantCenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

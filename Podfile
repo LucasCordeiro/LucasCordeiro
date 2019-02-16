@@ -1,5 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '11.1'
+platform :ios, '12.1'
 use_frameworks!
 
 target "LucasCordeiro" do
