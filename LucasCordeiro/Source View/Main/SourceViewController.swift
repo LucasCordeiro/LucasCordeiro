@@ -23,6 +23,16 @@ class SourceViewController: UIViewController {
     // MARK: - Life Cycle Methods -
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        viewModel.listSource { [weak self] (_, _) in
+            guard let strongSelf = self else {
+                return
+            }
+
+            strongSelf.tableView.reloadData()
+        }
+
+        configureTableView()
     }
 
     //

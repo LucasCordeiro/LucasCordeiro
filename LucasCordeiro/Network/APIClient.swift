@@ -45,4 +45,15 @@ class APIClient {
 
         performRequest(route: route, decoder: jsonDecoder, completion: completion)
     }
+
+    /// Get source from API
+    ///
+    /// - Parameters:
+    ///   - completion: completion called after finishing request
+    static func listSources(country: String, completion: @escaping (Result<NewsSourceResult>) -> Void) {
+        let jsonDecoder = JSONDecoder()
+        let route = APIRouter.listSources(country: country)
+
+        performRequest(route: route, decoder: jsonDecoder, completion: completion)
+    }
 }

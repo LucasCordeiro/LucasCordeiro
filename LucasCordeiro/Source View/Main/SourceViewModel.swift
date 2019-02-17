@@ -23,7 +23,25 @@ class SourceViewModel: NSObject {
     /// - Parameters:
     ///   - completion: returns 'success'property and 'errorMessage' if appliable
     func listSource(completion: @escaping (_ success: Bool, _ errorMessage: String?) -> Void) {
+        APIClient.listSources(country: country) { [weak self] (result) in
+            guard let strongSelf = self else {
+                completion(false, "Reference error")
+                return
+            }
+            var success = false
+            var errorMessage: String?
 
+            if let validResult = try? result.unwrap() {
+                if let sources = validResult.sources {
+                    strongSelf.sourceList.append(contentsOf: sources)
+                    success = true
+                }
+            } else {
+                errorMessage = "Service error. Try to verify listSources methods."
+            }
+
+            completion(success, errorMessage)
+        }
     }
 
     /// Get the number of sources Sections
