@@ -28,9 +28,9 @@ class SourceViewController: UIViewController {
     //
     // MARK: - Configuration Methods -
     private func configureTableView() {
-        let nib = UINib(nibName: "NewsTableViewCell", bundle: nil)
+        let nib = UINib(nibName: "SourceTableViewCell", bundle: nil)
 
-        tableView.register(nib, forCellReuseIdentifier: NewsTableViewCell.viewDescription())
+        tableView.register(nib, forCellReuseIdentifier: SourceTableViewCell.viewDescription())
 
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
