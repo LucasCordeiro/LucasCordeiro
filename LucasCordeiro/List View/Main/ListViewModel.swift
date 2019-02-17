@@ -21,6 +21,7 @@ class ListViewModel: NSObject {
     private var page = 0
 
     private var country = "us"
+
     //
     // MARK: - News Method -
     /// Get list of news

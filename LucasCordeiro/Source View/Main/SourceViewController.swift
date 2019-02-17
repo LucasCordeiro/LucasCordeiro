@@ -7,24 +7,79 @@
 //
 
 import UIKit
+import EmptyDataSet_Swift
 
 class SourceViewController: UIViewController {
 
+    //
+    // MARK: - Outlets -
+    @IBOutlet weak var tableView: UITableView!
+
+    //
+    // MARK: - Local Properties -
+    private let viewModel = SourceViewModel()
+
+    //
+    // MARK: - Life Cycle Methods -
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
-    
 
-    /*
-    // MARK: - Navigation
+    //
+    // MARK: - Configuration Methods -
+    private func configureTableView() {
+        let nib = UINib(nibName: "NewsTableViewCell", bundle: nil)
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        tableView.register(nib, forCellReuseIdentifier: NewsTableViewCell.viewDescription())
+
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
     }
-    */
+}
 
+//
+// MARK: - UITableViewDelegate Extension -
+extension SourceViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
+}
+
+//
+// MARK: - UITableViewDataSource Extension -
+extension SourceViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.numberOfSection()
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.numberOfRows(inSection: section)
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier:
+            SourceTableViewCell.viewDescription(), for: indexPath) as? SourceTableViewCell else {
+                assertionFailure("No cell registred with \(SourceTableViewCell.viewDescription()) identifier registred")
+
+                return UITableViewCell()
+        }
+
+        let sourceName = viewModel.sourceName(at: indexPath) ?? "Name Not Found"
+        let sourceDescription = viewModel.sourceDescription(at: indexPath) ?? "Description Not Found"
+        let sourceUrl = viewModel.sourceUrl(at: indexPath) ?? "URL Not Found"
+
+        cell.configureCell(sourceName: sourceName,
+                           sourceDescription: sourceDescription,
+                           sourceUrl: sourceUrl)
+
+        return cell
+    }
+}
+
+//
+// MARK: - EmptyDataSetSource Extension -
+extension SourceViewController: EmptyDataSetSource {
+}
+
+//
+// MARK: - EmptyDataSetDelegate Extension -
+extension SourceViewController: EmptyDataSetDelegate {
 }

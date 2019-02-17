@@ -10,15 +10,26 @@ import UIKit
 
 class SourceTableViewCell: UITableViewCell {
 
+    //
+    // MARK: - Outlets -
+    @IBOutlet weak var nameLabelOutlet: UILabel!
+    @IBOutlet weak var urlLabelOutlet: UILabel!
+    @IBOutlet weak var descriptionLabelOutlet: UILabel!
+
+    //
+    // MARK: - Life Cycle Methods -
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    //
+    // MARK: - Configure Methods -
+    func configureCell(sourceName: String,
+                       sourceDescription: String,
+                       sourceUrl: String) {
 
-        // Configure the view for the selected state
+        nameLabelOutlet.text = sourceName
+        urlLabelOutlet.text = sourceUrl
+        descriptionLabelOutlet.text = sourceDescription
     }
-    
 }
