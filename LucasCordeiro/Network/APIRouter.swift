@@ -13,11 +13,13 @@ enum APIRouter: URLRequestConvertible {
 
     // MARK: - Comunication
     case listNews(country: String, pageSize: Int, page: Int)
+    case listSources(country: String)
 
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
         switch self {
-        case .listNews:
+        case .listNews,
+             .listSources:
             return .get
         }
     }
@@ -26,15 +28,17 @@ enum APIRouter: URLRequestConvertible {
     private var path: String {
         switch self {
         case .listNews(let country, let pageSize, let page):
-            return "top-headlines?country=\(country)&pageSize=\(pageSize)&page=\(page)" +
-                ServerInfo.ServiceServer.suffixURL
+            return "top-headlines?country=\(country)&pageSize=\(pageSize)&page=\(page)"
+        case .listSources(let country):
+            return "sources?country=\(country)"
         }
     }
 
     // MARK: - Parameters
     private var parameters: Parameters? {
         switch self {
-        case .listNews:
+        case .listNews,
+             .listSources:
             return nil
         }
     }
@@ -45,8 +49,11 @@ enum APIRouter: URLRequestConvertible {
         var url: URL
 
         switch self {
-        case .listNews:
-            url = try (ServerInfo.ServiceServer.newsApiUrl+path).asURL()
+        case .listNews,
+             .listSources:
+            let urlString = ServerInfo.ServiceServer.newsApiUrl + path +
+                ServerInfo.ServiceServer.suffixURL
+            url = try urlString.asURL()
         }
 
         var urlRequest = URLRequest(url: url)
