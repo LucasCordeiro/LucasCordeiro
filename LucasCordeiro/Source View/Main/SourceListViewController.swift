@@ -1,5 +1,5 @@
 //
-//  SourceViewController.swift
+//  SourceListViewController.swift
 //  LucasCordeiro
 //
 //  Created by Lucas Cordeiro on 17/02/19.
@@ -8,27 +8,32 @@
 
 import UIKit
 import EmptyDataSet_Swift
+import Lottie
 
-class SourceViewController: UIViewController {
+class SourceListViewController: UIViewController {
 
     //
     // MARK: - Outlets -
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var loadingViewOutlet: LOTAnimationView!
 
     //
     // MARK: - Local Properties -
-    private let viewModel = SourceViewModel()
+    private let viewModel = SourceListViewModel()
+    weak var delegate: NewsContainerViewControllerDelegate?
 
     //
     // MARK: - Life Cycle Methods -
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loadingViewOutlet.showAndPlay(loopAnimation: true)
         viewModel.listSource { [weak self] (_, _) in
             guard let strongSelf = self else {
                 return
             }
 
+            strongSelf.loadingViewOutlet.hideAndStop()
             strongSelf.tableView.reloadData()
         }
 
@@ -49,12 +54,17 @@ class SourceViewController: UIViewController {
 
 //
 // MARK: - UITableViewDelegate Extension -
-extension SourceViewController: UITableViewDelegate {
+extension SourceListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let sourceId = viewModel.sourceId(at: indexPath) {
-            let viewController = ListViewController.storyboardInit(sourceId: sourceId)
+            if let delegate = delegate {
+                delegate.didChangeSource(sourceId: sourceId)
+            } else {
+                let viewController = NewsContainerViewController.storyboardInit(sourceId: sourceId)
 
-            self.navigationController?.pushViewController(viewController, animated: true)
+                self.navigationController?.pushViewController(viewController, animated: true)
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
         } else {
 
         }
@@ -63,7 +73,7 @@ extension SourceViewController: UITableViewDelegate {
 
 //
 // MARK: - UITableViewDataSource Extension -
-extension SourceViewController: UITableViewDataSource {
+extension SourceListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.numberOfSection()
     }
@@ -94,10 +104,10 @@ extension SourceViewController: UITableViewDataSource {
 
 //
 // MARK: - EmptyDataSetSource Extension -
-extension SourceViewController: EmptyDataSetSource {
+extension SourceListViewController: EmptyDataSetSource {
 }
 
 //
 // MARK: - EmptyDataSetDelegate Extension -
-extension SourceViewController: EmptyDataSetDelegate {
+extension SourceListViewController: EmptyDataSetDelegate {
 }

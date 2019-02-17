@@ -1,5 +1,5 @@
 //
-//  SourceViewModel.swift
+//  SourceListViewModel.swift
 //  LucasCordeiro
 //
 //  Created by Lucas Cordeiro on 17/02/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SourceViewModel: NSObject {
+class SourceListViewModel: NSObject {
 
     //
     // MARK: - Local Properties -

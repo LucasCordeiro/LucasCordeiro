@@ -26,27 +26,27 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ap-vJ-jce">
-                        <rect key="frame" x="20" y="33.5" width="391" height="27.5"/>
+                        <rect key="frame" x="20" y="40" width="391" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="URL" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVc-Wv-HXK">
-                        <rect key="frame" x="387" y="11" width="24" height="15"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="URL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVc-Wv-HXK">
+                        <rect key="frame" x="20" y="27.5" width="14.5" height="8.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="7"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="AVc-Wv-HXK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="5m3-wc-raO"/>
                     <constraint firstItem="9ap-vJ-jce" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="A4v-K3-Ukg"/>
                     <constraint firstAttribute="bottomMargin" secondItem="9ap-vJ-jce" secondAttribute="bottom" id="BLC-ut-tU3"/>
-                    <constraint firstItem="9ap-vJ-jce" firstAttribute="top" secondItem="jgf-Lc-2V9" secondAttribute="bottom" constant="8" id="Qer-a2-Oi1"/>
+                    <constraint firstItem="9ap-vJ-jce" firstAttribute="top" secondItem="AVc-Wv-HXK" secondAttribute="bottom" constant="4" id="NrG-CE-9w7"/>
+                    <constraint firstItem="AVc-Wv-HXK" firstAttribute="top" secondItem="jgf-Lc-2V9" secondAttribute="bottom" constant="2" id="QvD-sF-5U8"/>
                     <constraint firstItem="jgf-Lc-2V9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="TxS-A2-fdt"/>
                     <constraint firstItem="jgf-Lc-2V9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="bfn-Kf-eRc"/>
+                    <constraint firstItem="AVc-Wv-HXK" firstAttribute="leading" secondItem="jgf-Lc-2V9" secondAttribute="leading" id="czW-Ri-MSs"/>
                     <constraint firstItem="9ap-vJ-jce" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="vrA-kt-DJG"/>
-                    <constraint firstItem="AVc-Wv-HXK" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="yNl-Lk-sto"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -55,7 +55,7 @@
                 <outlet property="nameLabelOutlet" destination="jgf-Lc-2V9" id="d1t-S3-l4d"/>
                 <outlet property="urlLabelOutlet" destination="AVc-Wv-HXK" id="bb9-qO-u7L"/>
             </connections>
-            <point key="canvasLocation" x="226.40000000000001" y="131.33433283358323"/>
+            <point key="canvasLocation" x="188" y="131"/>
         </tableViewCell>
     </objects>
 </document>
