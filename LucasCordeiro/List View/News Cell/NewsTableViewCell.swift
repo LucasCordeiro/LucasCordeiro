@@ -20,6 +20,7 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var imageLoadingView: LOTAnimationView!
     @IBOutlet weak var sourceLabelOutlet: UILabel!
     @IBOutlet weak var dateLabelOutlet: UILabel!
+
     //
     // MARK: - Life Cycle Methods -
     override func awakeFromNib() {
