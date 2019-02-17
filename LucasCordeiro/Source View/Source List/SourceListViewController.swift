@@ -1,5 +1,5 @@
 //
-//  SourceViewController.swift
+//  SourceListViewController.swift
 //  LucasCordeiro
 //
 //  Created by Lucas Cordeiro on 17/02/19.
@@ -9,7 +9,7 @@
 import UIKit
 import EmptyDataSet_Swift
 
-class SourceViewController: UIViewController {
+class SourceListViewController: UIViewController {
 
     //
     // MARK: - Outlets -
@@ -17,7 +17,7 @@ class SourceViewController: UIViewController {
 
     //
     // MARK: - Local Properties -
-    private let viewModel = SourceViewModel()
+    private let viewModel = SourceListViewModel()
 
     //
     // MARK: - Life Cycle Methods -
@@ -49,7 +49,7 @@ class SourceViewController: UIViewController {
 
 //
 // MARK: - UITableViewDelegate Extension -
-extension SourceViewController: UITableViewDelegate {
+extension SourceListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let sourceId = viewModel.sourceId(at: indexPath) {
             let viewController = ListViewController.storyboardInit(sourceId: sourceId)
@@ -63,7 +63,7 @@ extension SourceViewController: UITableViewDelegate {
 
 //
 // MARK: - UITableViewDataSource Extension -
-extension SourceViewController: UITableViewDataSource {
+extension SourceListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.numberOfSection()
     }
@@ -94,10 +94,10 @@ extension SourceViewController: UITableViewDataSource {
 
 //
 // MARK: - EmptyDataSetSource Extension -
-extension SourceViewController: EmptyDataSetSource {
+extension SourceListViewController: EmptyDataSetSource {
 }
 
 //
 // MARK: - EmptyDataSetDelegate Extension -
-extension SourceViewController: EmptyDataSetDelegate {
+extension SourceListViewController: EmptyDataSetDelegate {
 }

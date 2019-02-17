@@ -75,11 +75,12 @@ class ListViewModel: NSObject {
                                 }
                                 var success = false
                                 var errorMessage: String?
-     
+
                                 if let validResult = try? result.unwrap() {
                                     let totalResults = validResult.totalResults ?? 0
-                                    strongSelf.hasPagination = strongSelf.page < strongSelf.pageCount(totalResult: totalResults)
-  
+                                    strongSelf.hasPagination =
+                                        strongSelf.page < strongSelf.pageCount(totalResult: totalResults)
+
                                     if let articles = validResult.articles, articles.count > 0 {
                                         strongSelf.newsList.append(contentsOf: articles)
                                     } else {
@@ -163,13 +164,13 @@ class ListViewModel: NSObject {
 
         return url
     }
-    
+
     //
     // MARK: - Auxiliar Methods -
     func isLoadingSection(at indexPath: IndexPath) -> Bool {
         return indexPath.section == 1
     }
-    
+
     //
     // MARK: - Auxiliar Local Methods -
     private func pageCount(totalResult: Int) -> Int {

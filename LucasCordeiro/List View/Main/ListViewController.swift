@@ -80,7 +80,7 @@ extension ListViewController: UITableViewDataSource {
                 guard let strongSelf = self else {
                     return
                 }
-                
+
                 strongSelf.tableView.reloadData()
             })
         }
@@ -95,15 +95,15 @@ extension ListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-
         if viewModel?.isLoadingSection(at: indexPath) ?? false {
             guard let cell = tableView.dequeueReusableCell(withIdentifier:
                 LoadingTableViewCell.viewDescription(), for: indexPath) as? LoadingTableViewCell else {
-                    assertionFailure("No cell registred with \(LoadingTableViewCell.viewDescription()) identifier registred")
-                    
+                    assertionFailure("No cell registred with " +
+                        "\(LoadingTableViewCell.viewDescription()) identifier registred")
+
                     return UITableViewCell()
             }
-            
+
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier:
