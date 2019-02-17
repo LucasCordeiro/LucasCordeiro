@@ -55,15 +55,29 @@ extension String {
 
 extension LOTAnimationView {
     func showAndPlay(loopAnimation: Bool) {
-        self.isHidden = false
-        self.superview?.isHidden = false
+
         self.loopAnimation = loopAnimation
         self.play()
+
+        self.isHidden = false
+        self.superview?.isHidden = false
+        self.alpha = 0.0
+        self.superview?.alpha = 0.0
+
+        UIView.animate(withDuration: 0.5) {
+            self.alpha = 1.0
+            self.superview?.alpha = 0.35
+        }
     }
 
     func hideAndStop() {
-        self.stop()
-        self.superview?.isHidden = true
-        self.isHidden = true
+        UIView.animate(withDuration: 0.5, animations: {
+            self.alpha = 0.0
+            self.superview?.alpha = 0.0
+        }) { (_) in
+            self.stop()
+            self.superview?.isHidden = true
+            self.isHidden = true
+        }
     }
 }
