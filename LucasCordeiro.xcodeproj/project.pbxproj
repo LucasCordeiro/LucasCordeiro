@@ -26,6 +26,7 @@
 		AE7A11C822183BAA009DE984 /* ListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7A11C722183BAA009DE984 /* ListViewModelTests.swift */; };
 		AE7A11CB22186AD1009DE984 /* imageLoading.json in Resources */ = {isa = PBXBuildFile; fileRef = AE7A11CA22186AD1009DE984 /* imageLoading.json */; };
 		AE7A11CD2218725C009DE984 /* ExtensionCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7A11CC2218725C009DE984 /* ExtensionCenter.swift */; };
+		AE7A11CF2218D7E5009DE984 /* NewsSourceCM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7A11CE2218D7E5009DE984 /* NewsSourceCM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		AE7A11C722183BAA009DE984 /* ListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModelTests.swift; sourceTree = "<group>"; };
 		AE7A11CA22186AD1009DE984 /* imageLoading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = imageLoading.json; sourceTree = "<group>"; };
 		AE7A11CC2218725C009DE984 /* ExtensionCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCenter.swift; sourceTree = "<group>"; };
+		AE7A11CE2218D7E5009DE984 /* NewsSourceCM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSourceCM.swift; sourceTree = "<group>"; };
 		CDC6D8B12344385362E7BF4C /* Pods-LucasCordeiro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LucasCordeiro.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LucasCordeiro/Pods-LucasCordeiro.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -233,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				AE7A11BE2218350C009DE984 /* NewsCM.swift */,
+				AE7A11CE2218D7E5009DE984 /* NewsSourceCM.swift */,
 			);
 			path = "Component Model";
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				AE7A11B72217945A009DE984 /* APIRouter.swift in Sources */,
 				AE7A117A22178D94009DE984 /* AppDelegate.swift in Sources */,
 				AE7A11B422179046009DE984 /* ListViewModel.swift in Sources */,
+				AE7A11CF2218D7E5009DE984 /* NewsSourceCM.swift in Sources */,
 				AE7A11BF2218350C009DE984 /* NewsCM.swift in Sources */,
 				AE7A11B122178FD1009DE984 /* NewsTableViewCell.swift in Sources */,
 				AE7A11B92217946D009DE984 /* APIClient.swift in Sources */,

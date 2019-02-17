@@ -18,7 +18,8 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabelOutlet: UILabel!
     @IBOutlet weak var descriptionLabelOutlet: UILabel!
     @IBOutlet weak var imageLoadingView: LOTAnimationView!
-
+    @IBOutlet weak var sourceLabelOutlet: UILabel!
+    @IBOutlet weak var dateLabelOutlet: UILabel!
     //
     // MARK: - Life Cycle Methods -
     override func awakeFromNib() {
@@ -27,10 +28,16 @@ class NewsTableViewCell: UITableViewCell {
 
     //
     // MARK: - Configure Methods -
-    func configureCell(newsTitle: String, newsDescription: String, newsImageURL: URL?) {
+    func configureCell(newsTitle: String,
+                       newsDescription: String,
+                       newsDate: String,
+                       newsSourceName: String,
+                       newsImageURL: URL?) {
 
         titleLabelOutlet.text = newsTitle
         descriptionLabelOutlet.text = newsDescription
+        sourceLabelOutlet.text = newsSourceName
+        dateLabelOutlet.text = newsDate
 
         imageLoadingView.isHidden = false
         imageLoadingView.loopAnimation = true
@@ -41,7 +48,7 @@ class NewsTableViewCell: UITableViewCell {
                 return
             }
 
-            strongSelf.imageLoadingView.isHidden = false
+            strongSelf.imageLoadingView.isHidden = true
             strongSelf.imageLoadingView.stop()
 
             if error != nil {
