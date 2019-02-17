@@ -8,27 +8,32 @@
 
 import UIKit
 import EmptyDataSet_Swift
+import Lottie
 
 class SourceListViewController: UIViewController {
 
     //
     // MARK: - Outlets -
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var loadingViewOutlet: LOTAnimationView!
 
     //
     // MARK: - Local Properties -
     private let viewModel = SourceListViewModel()
+    weak var delegate: NewsContainerViewControllerDelegate?
 
     //
     // MARK: - Life Cycle Methods -
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loadingViewOutlet.showAndPlay(loopAnimation: true)
         viewModel.listSource { [weak self] (_, _) in
             guard let strongSelf = self else {
                 return
             }
 
+            strongSelf.loadingViewOutlet.hideAndStop()
             strongSelf.tableView.reloadData()
         }
 
@@ -52,9 +57,14 @@ class SourceListViewController: UIViewController {
 extension SourceListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let sourceId = viewModel.sourceId(at: indexPath) {
-            let viewController = ListViewController.storyboardInit(sourceId: sourceId)
+            if let delegate = delegate {
+                delegate.didChangeSource(sourceId: sourceId)
+            } else {
+                let viewController = NewsContainerViewController.storyboardInit(sourceId: sourceId)
 
-            self.navigationController?.pushViewController(viewController, animated: true)
+                self.navigationController?.pushViewController(viewController, animated: true)
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
         } else {
 
         }

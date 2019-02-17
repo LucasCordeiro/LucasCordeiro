@@ -1,5 +1,5 @@
 //
-//  ListViewController.swift
+//  ListNewsViewController.swift
 //  LucasCordeiro
 //
 //  Created by Lucas Cordeiro on 15/02/19.
@@ -8,28 +8,30 @@
 
 import UIKit
 import EmptyDataSet_Swift
+import Lottie
 
-class ListViewController: UIViewController {
+class ListNewsViewController: UIViewController {
 
     //
     // MARK: - Outlets -
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var loadingViewOutlet: LOTAnimationView!
 
     //
     // MARK: - Local Properties -
-    private var viewModel: ListViewModel?
+    private var viewModel: ListNewsViewModel?
 
     //
     // MARK: - Life Cycle Methods -
-    static func storyboardInit(sourceId: String) -> ListViewController {
-        let storyboard = UIStoryboard.init(name: "ListView", bundle: nil)
+    static func storyboardInit(sourceId: String) -> ListNewsViewController {
+        let storyboard = UIStoryboard.init(name: "NewsView", bundle: nil)
         guard let viewController = storyboard.instantiateViewController(withIdentifier:
-            ListViewController.viewControllerDescription()) as? ListViewController else {
+            ListNewsViewController.viewControllerDescription()) as? ListNewsViewController else {
             assertionFailure("Verify storyboard name and viewController identifier (on .stoyboard too)")
-            return ListViewController()
+            return ListNewsViewController()
         }
 
-        viewController.viewModel = ListViewModel.init(sourceId: sourceId)
+        viewController.viewModel = ListNewsViewModel.init(sourceId: sourceId)
 
         return viewController
     }
@@ -42,17 +44,16 @@ class ListViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        viewModel?.listNews { [weak self] (_, _) in
-            guard let strongSelf = self  else {
-                return
-            }
 
-            strongSelf.tableView.reloadData()
-        }
+        listNews(sourceId: nil)
     }
 
     //
     // MARK: - Configuration Methods -
+    func configureViewModel(sourceId: String) {
+        self.viewModel = ListNewsViewModel.init(sourceId: sourceId)
+    }
+
     private func configureTableView() {
         let newsNib = UINib(nibName: "NewsTableViewCell", bundle: nil)
         tableView.register(newsNib, forCellReuseIdentifier: NewsTableViewCell.viewDescription())
@@ -63,28 +64,57 @@ class ListViewController: UIViewController {
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
     }
+
+    //
+    // MARK: - List Methods -
+    private func listNews(sourceId: String?) {
+
+        tableView.setContentOffset(.zero, animated: false)
+        loadingViewOutlet.showAndPlay(loopAnimation: true)
+        viewModel?.listNews(sourceId: sourceId) { [weak self] (_, _) in
+            guard let strongSelf = self  else {
+                return
+            }
+
+            strongSelf.loadingViewOutlet.hideAndStop()
+            strongSelf.tableView.reloadData()
+        }
+    }
+
+    private func paginate() {
+        viewModel?.paginateNews(completion: { [weak self] (_, _) in
+            guard let strongSelf = self else {
+                return
+            }
+
+            strongSelf.tableView.reloadData()
+        })
+    }
+}
+
+//
+// MARK: - UIScrollViewDelegate Extension -
+extension ListNewsViewController: UIScrollViewDelegate {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let currentOffset = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+
+        if currentOffset >= maximumOffset * 0.65 {
+            paginate()
+        }
+    }
 }
 
 //
 // MARK: - UITableViewDelegate Extension -
-extension ListViewController: UITableViewDelegate {
+extension ListNewsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
 }
 
 //
 // MARK: - UITableViewDataSource Extension -
-extension ListViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if viewModel?.isLoadingSection(at: indexPath) ?? false {
-            viewModel?.paginateNews(completion: { [weak self] (_, _) in
-                guard let strongSelf = self else {
-                    return
-                }
+extension ListNewsViewController: UITableViewDataSource {
 
-                strongSelf.tableView.reloadData()
-            })
-        }
-    }
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel?.numberOfSection() ?? 0
     }
@@ -134,10 +164,16 @@ extension ListViewController: UITableViewDataSource {
 
 //
 // MARK: - EmptyDataSetSource Extension -
-extension ListViewController: EmptyDataSetSource {
+extension ListNewsViewController: EmptyDataSetSource {
 }
 
 //
 // MARK: - EmptyDataSetDelegate Extension -
-extension ListViewController: EmptyDataSetDelegate {
+extension ListNewsViewController: EmptyDataSetDelegate {
+}
+
+extension ListNewsViewController: NewsContainerViewControllerDelegate {
+    func didChangeSource(sourceId: String) {
+        listNews(sourceId: sourceId)
+    }
 }

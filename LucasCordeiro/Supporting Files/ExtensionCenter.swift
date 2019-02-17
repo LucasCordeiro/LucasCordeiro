@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lottie
 
 extension UIView {
 
@@ -49,5 +50,20 @@ extension String {
         dateFormatter.dateFormat = toFormat
 
         return dateFormatter.string(from: showDate)
+    }
+}
+
+extension LOTAnimationView {
+    func showAndPlay(loopAnimation: Bool) {
+        self.isHidden = false
+        self.superview?.isHidden = false
+        self.loopAnimation = loopAnimation
+        self.play()
+    }
+
+    func hideAndStop() {
+        self.stop()
+        self.superview?.isHidden = true
+        self.isHidden = true
     }
 }

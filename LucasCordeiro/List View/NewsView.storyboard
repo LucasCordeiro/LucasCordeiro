@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G69-aS-9Mq">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="hEY-Yf-PtB">
+            <objects>
+                <navigationController id="G69-aS-9Mq" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jnA-7m-LWz">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="7WV-5v-bQq" kind="relationship" relationship="rootViewController" id="zSl-Gz-eWz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jlL-8G-dSL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1431" y="78"/>
+        </scene>
+        <!--List News View Controller-->
+        <scene sceneID="X4Y-Cn-N7M">
+            <objects>
+                <viewController storyboardIdentifier="ListNewsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mSN-ng-OXs" customClass="ListNewsViewController" customModule="LucasCordeiro" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YCV-Nq-UP2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JLr-zf-vA6" customClass="L">
+                                <rect key="frame" x="0.0" y="20" width="375" height="583"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="mSN-ng-OXs" id="wW6-Sf-x2z"/>
+                                    <outlet property="delegate" destination="mSN-ng-OXs" id="U9g-fh-cCl"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AVQ-6e-HCx">
+                                <rect key="frame" x="0.0" y="20" width="375" height="583"/>
+                                <subviews>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fok-ek-KHB" customClass="LOTAnimationView">
+                                        <rect key="frame" x="137.5" y="241.5" width="100" height="100"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="fok-ek-KHB" secondAttribute="height" multiplier="1:1" id="RgL-wY-5ev"/>
+                                            <constraint firstAttribute="height" constant="100" id="fbK-E6-DB9"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="animation" value="loadingAnimation"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.34999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="fok-ek-KHB" firstAttribute="centerY" secondItem="AVQ-6e-HCx" secondAttribute="centerY" id="6O8-Lz-D2d"/>
+                                    <constraint firstItem="fok-ek-KHB" firstAttribute="centerX" secondItem="AVQ-6e-HCx" secondAttribute="centerX" id="LqI-6q-tuw"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="AVQ-6e-HCx" firstAttribute="top" secondItem="JLr-zf-vA6" secondAttribute="top" id="56w-sj-Z7F"/>
+                            <constraint firstItem="JLr-zf-vA6" firstAttribute="leading" secondItem="uKo-OI-eaK" secondAttribute="leading" id="6jF-ZF-yxF"/>
+                            <constraint firstItem="JLr-zf-vA6" firstAttribute="trailing" secondItem="uKo-OI-eaK" secondAttribute="trailing" id="9nq-13-8vS"/>
+                            <constraint firstItem="AVQ-6e-HCx" firstAttribute="bottom" secondItem="JLr-zf-vA6" secondAttribute="bottom" id="BaC-eR-LhJ"/>
+                            <constraint firstItem="AVQ-6e-HCx" firstAttribute="leading" secondItem="JLr-zf-vA6" secondAttribute="leading" id="M2c-he-CIf"/>
+                            <constraint firstItem="JLr-zf-vA6" firstAttribute="top" secondItem="uKo-OI-eaK" secondAttribute="top" id="M8h-ad-vzM"/>
+                            <constraint firstItem="JLr-zf-vA6" firstAttribute="bottom" secondItem="uKo-OI-eaK" secondAttribute="bottom" id="i8M-M9-coa"/>
+                            <constraint firstItem="AVQ-6e-HCx" firstAttribute="trailing" secondItem="JLr-zf-vA6" secondAttribute="trailing" id="lxN-nk-gcJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="uKo-OI-eaK"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="EsM-ai-l1O"/>
+                    <connections>
+                        <outlet property="loadingViewOutlet" destination="fok-ek-KHB" id="4JR-yv-kmb"/>
+                        <outlet property="tableView" destination="JLr-zf-vA6" id="KMZ-cL-MTr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CoH-bX-Wup" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-930.39999999999998" y="824.43778110944538"/>
+        </scene>
+        <!--SourceViewController-->
+        <scene sceneID="JQj-p0-lZ8">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="SourceViewController" storyboardName="SourceView" referencedIdentifier="SourceViewController" id="flv-gw-BIG" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1c5-gb-JbF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-300" y="545"/>
+        </scene>
+        <!--News Container View Controller-->
+        <scene sceneID="6dV-yH-OeX">
+            <objects>
+                <viewController storyboardIdentifier="NewsContainerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7WV-5v-bQq" customClass="NewsContainerViewController" customModule="LucasCordeiro" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4tj-j3-geC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAQ-uW-5rS">
+                                <rect key="frame" x="0.0" y="64" width="0.0" height="603"/>
+                                <connections>
+                                    <segue destination="flv-gw-BIG" kind="embed" id="QtS-XL-qxS"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X4x-iq-BAu">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <connections>
+                                    <segue destination="mSN-ng-OXs" kind="embed" identifier="" id="ps9-oM-NLq"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qAQ-uW-5rS" firstAttribute="top" secondItem="uQX-8E-hRv" secondAttribute="top" id="3oT-kd-89D"/>
+                            <constraint firstAttribute="bottom" secondItem="X4x-iq-BAu" secondAttribute="bottom" id="6CO-ge-K2A"/>
+                            <constraint firstItem="X4x-iq-BAu" firstAttribute="leading" secondItem="qAQ-uW-5rS" secondAttribute="trailing" id="9Ni-k0-jhT"/>
+                            <constraint firstItem="X4x-iq-BAu" firstAttribute="trailing" secondItem="uQX-8E-hRv" secondAttribute="trailing" id="AaM-qL-1Dj"/>
+                            <constraint firstItem="uQX-8E-hRv" firstAttribute="bottom" secondItem="qAQ-uW-5rS" secondAttribute="bottom" id="IVJ-Ow-jXq"/>
+                            <constraint firstItem="X4x-iq-BAu" firstAttribute="leading" relation="lessThanOrEqual" secondItem="uQX-8E-hRv" secondAttribute="leading" id="QgW-8s-i6P"/>
+                            <constraint firstItem="X4x-iq-BAu" firstAttribute="top" secondItem="uQX-8E-hRv" secondAttribute="top" id="R1c-Sn-gV5"/>
+                            <constraint firstItem="qAQ-uW-5rS" firstAttribute="leading" secondItem="uQX-8E-hRv" secondAttribute="leading" id="VHB-sY-d8y"/>
+                            <constraint firstItem="qAQ-uW-5rS" firstAttribute="width" secondItem="X4x-iq-BAu" secondAttribute="width" priority="999" id="hhX-Z3-2ZE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="uQX-8E-hRv"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="jRo-iF-Nav"/>
+                    <connections>
+                        <outlet property="leadingListConstraintOutlet" destination="QgW-8s-i6P" id="s9f-LX-ypX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jjc-bK-O9o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-649" y="78"/>
+        </scene>
+    </scenes>
+</document>

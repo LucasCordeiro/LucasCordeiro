@@ -8,6 +8,6 @@
 
 import UIKit
 
-class SourceContainerViewModel: NSObject {
+class NewsContainerViewModel: NSObject {
 
 }

@@ -1,5 +1,5 @@
 //
-//  ListViewModel.swift
+//  ListNewsViewModel.swift
 //  LucasCordeiro
 //
 //  Created by Lucas Cordeiro on 15/02/19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ListViewModel: NSObject {
+class ListNewsViewModel: NSObject {
 
     //
     // MARK: - Local Properties -
@@ -16,7 +16,7 @@ class ListViewModel: NSObject {
 
     private var hasPagination = false
 
-    private var pageSize = 2
+    private var pageSize = 4
 
     private var page = 1
 
@@ -34,12 +34,15 @@ class ListViewModel: NSObject {
     ///
     /// - Parameters:
     ///   - completion: returns 'success'property and 'errorMessage' if appliable
-    func listNews(completion: @escaping (_ success: Bool, _ errorMessage: String?) -> Void) {
+    func listNews(sourceId: String?, completion: @escaping (_ success: Bool, _ errorMessage: String?) -> Void) {
+
+        self.sourceId = sourceId != nil ? sourceId : self.sourceId
 
         hasPagination = true
-        APIClient.listNews(pageSize: pageSize,
-                           page: page,
-                           sourceId: sourceId) { [weak self] (result) in
+        page = 1
+        APIClient.listNews(pageSize: self.pageSize,
+                           page: self.page,
+                           sourceId: self.sourceId) { [weak self] (result) in
             guard let strongSelf = self else {
                 completion(false, "Reference error")
                 return
@@ -52,7 +55,7 @@ class ListViewModel: NSObject {
                 strongSelf.hasPagination = strongSelf.page < strongSelf.pageCount(totalResult: totalResults)
 
                 if let articles = validResult.articles {
-                    strongSelf.newsList.append(contentsOf: articles)
+                    strongSelf.newsList = articles
                     success = true
                 }
             } else {
