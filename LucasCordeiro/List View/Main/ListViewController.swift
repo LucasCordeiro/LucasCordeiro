@@ -17,18 +17,19 @@ class ListViewController: UIViewController {
 
     //
     // MARK: - Local Properties -
-    private let viewModel = ListViewModel()
+    private var viewModel: ListViewModel?
 
     //
     // MARK: - Life Cycle Methods -
-    static func storyboardInit() -> ListViewController {
+    static func storyboardInit(sourceId: String) -> ListViewController {
         let storyboard = UIStoryboard.init(name: "ListView", bundle: nil)
         guard let viewController = storyboard.instantiateViewController(withIdentifier:
             ListViewController.viewControllerDescription()) as? ListViewController else {
             assertionFailure("Verify storyboard name and viewController identifier (on .stoyboard too)")
-
             return ListViewController()
         }
+
+        viewController.viewModel = ListViewModel.init(sourceId: sourceId)
 
         return viewController
     }
@@ -36,7 +37,7 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewModel.listNews { [weak self] (_, _) in
+        viewModel?.listNews { [weak self] (_, _) in
             guard let strongSelf = self  else {
                 return
             }
@@ -69,11 +70,11 @@ extension ListViewController: UITableViewDelegate {
 // MARK: - UITableViewDataSource Extension -
 extension ListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.numberOfSection()
+        return viewModel?.numberOfSection() ?? 0
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfRows(inSection: section)
+        return viewModel?.numberOfRows(inSection: section) ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -84,11 +85,11 @@ extension ListViewController: UITableViewDataSource {
             return UITableViewCell()
         }
 
-        let newsTitle = viewModel.newsTitle(at: indexPath) ?? "Title Not Found"
-        let newsDescription = viewModel.newsDescription(at: indexPath) ?? "Description Not Found"
-        let newsDate = viewModel.newsDate(at: indexPath) ?? "Date Not Found"
-        let newsSourceName = viewModel.newsSourceName(at: indexPath) ?? "Source Not Found"
-        let newsThumbUrl = viewModel.newsThumbUrl(at: indexPath)
+        let newsTitle = viewModel?.newsTitle(at: indexPath) ?? "Title Not Found"
+        let newsDescription = viewModel?.newsDescription(at: indexPath) ?? "Description Not Found"
+        let newsDate = viewModel?.newsDate(at: indexPath) ?? "Date Not Found"
+        let newsSourceName = viewModel?.newsSourceName(at: indexPath) ?? "Source Not Found"
+        let newsThumbUrl = viewModel?.newsThumbUrl(at: indexPath)
 
         cell.configureCell(newsTitle: newsTitle,
                            newsDescription: newsDescription,

@@ -82,4 +82,12 @@ class SourceViewModel: NSObject {
     func sourceUrl(at indexPath: IndexPath) -> String? {
         return sourceList.count > indexPath.row ? sourceList[indexPath.row].url : nil
     }
+
+    /// Get ID of a source
+    ///
+    /// - Parameter indexPath: position of source on tableView
+    /// - Returns: source's ID
+    func sourceId(at indexPath: IndexPath) -> String? {
+        return sourceList.count > indexPath.row ? sourceList[indexPath.row].sourceID : nil
+    }
 }

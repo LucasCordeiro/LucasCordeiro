@@ -50,7 +50,15 @@ class SourceViewController: UIViewController {
 //
 // MARK: - UITableViewDelegate Extension -
 extension SourceViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let sourceId = viewModel.sourceId(at: indexPath) {
+            let viewController = ListViewController.storyboardInit(sourceId: sourceId)
+            
+            self.navigationController?.pushViewController(viewController, animated: true)
+        } else {
+
+        }
+    }
 }
 
 //

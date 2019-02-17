@@ -22,6 +22,14 @@ class ListViewModel: NSObject {
 
     private var country = "us"
 
+    private var sourceId: String?
+
+    init(sourceId: String) {
+        super.init()
+
+        self.sourceId = sourceId
+    }
+
     //
     // MARK: - News Method -
     /// Get list of news
