@@ -37,6 +37,11 @@ class ListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configureTableView()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         viewModel?.listNews { [weak self] (_, _) in
             guard let strongSelf = self  else {
                 return
@@ -44,8 +49,6 @@ class ListViewController: UIViewController {
 
             strongSelf.tableView.reloadData()
         }
-
-        configureTableView()
     }
 
     //
@@ -85,17 +88,19 @@ extension ListViewController: UITableViewDataSource {
             return UITableViewCell()
         }
 
-        let newsTitle = viewModel?.newsTitle(at: indexPath) ?? "Title Not Found"
-        let newsDescription = viewModel?.newsDescription(at: indexPath) ?? "Description Not Found"
-        let newsDate = viewModel?.newsDate(at: indexPath) ?? "Date Not Found"
-        let newsSourceName = viewModel?.newsSourceName(at: indexPath) ?? "Source Not Found"
-        let newsThumbUrl = viewModel?.newsThumbUrl(at: indexPath)
+        if let viewModel = viewModel {
+            let newsTitle = viewModel.newsTitle(at: indexPath)
+            let newsDescription = viewModel.newsDescription(at: indexPath)
+            let newsDate = viewModel.newsDate(at: indexPath)
+            let newsSourceName = viewModel.newsSourceName(at: indexPath)
+            let newsThumbUrl = viewModel.newsThumbUrl(at: indexPath)
 
-        cell.configureCell(newsTitle: newsTitle,
-                           newsDescription: newsDescription,
-                           newsDate: newsDate,
-                           newsSourceName: newsSourceName,
-                           newsImageURL: newsThumbUrl)
+            cell.configureCell(newsTitle: newsTitle,
+                               newsDescription: newsDescription,
+                               newsDate: newsDate,
+                               newsSourceName: newsSourceName,
+                               newsImageURL: newsThumbUrl)
+        }
 
         return cell
     }

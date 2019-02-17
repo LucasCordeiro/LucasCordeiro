@@ -12,7 +12,7 @@ import Alamofire
 enum APIRouter: URLRequestConvertible {
 
     // MARK: - Comunication
-    case listNews(country: String, pageSize: Int, page: Int)
+    case listNews(pageSize: Int, page: Int, sourceId: String?)
     case listSources(country: String)
 
     // MARK: - HTTPMethod
@@ -27,8 +27,9 @@ enum APIRouter: URLRequestConvertible {
     // MARK: - Path
     private var path: String {
         switch self {
-        case .listNews(let country, let pageSize, let page):
-            return "top-headlines?country=\(country)&pageSize=\(pageSize)&page=\(page)"
+        case .listNews(let pageSize, let page, let sourceId):
+            return "top-headlines?&pageSize=\(pageSize)&page=\(page)" +
+            (sourceId != nil ? "&sources=\(sourceId ?? "")" : "")
         case .listSources(let country):
             return "sources?country=\(country)"
         }

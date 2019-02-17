@@ -20,8 +20,6 @@ class ListViewModel: NSObject {
 
     private var page = 0
 
-    private var country = "us"
-
     private var sourceId: String?
 
     init(sourceId: String) {
@@ -38,7 +36,9 @@ class ListViewModel: NSObject {
     ///   - completion: returns 'success'property and 'errorMessage' if appliable
     func listNews(completion: @escaping (_ success: Bool, _ errorMessage: String?) -> Void) {
 
-        APIClient.listNews(country: country, pageSize: pageSize, page: page) { [weak self] (result) in
+        APIClient.listNews(pageSize: pageSize,
+                           page: page,
+                           sourceId: sourceId) { [weak self] (result) in
             guard let strongSelf = self else {
                 completion(false, "Reference error")
                 return
@@ -78,39 +78,41 @@ class ListViewModel: NSObject {
     ///
     /// - Parameter indexPath: position of news on tableView
     /// - Returns: news' title
-    func newsTitle(at indexPath: IndexPath) -> String? {
-        return newsList.count > indexPath.row ? newsList[indexPath.row].title : nil
+    func newsTitle(at indexPath: IndexPath) -> String {
+        return newsList.count > indexPath.row ? newsList[indexPath.row].title ?? "Title Not Found" : "Title Not Found"
     }
 
     /// Get description of a news
     ///
     /// - Parameter indexPath: position of news on tableView
     /// - Returns: news' description
-    func newsDescription(at indexPath: IndexPath) -> String? {
-        return newsList.count > indexPath.row ? newsList[indexPath.row].newsDescription : nil
+    func newsDescription(at indexPath: IndexPath) -> String {
+        return newsList.count > indexPath.row ?
+            newsList[indexPath.row].newsDescription ?? "Description Not Found" : "Description Not Found"
     }
 
     /// Get description of a news
     ///
     /// - Parameter indexPath: position of news on tableView
     /// - Returns: news' description
-    func newsDate(at indexPath: IndexPath) -> String? {
+    func newsDate(at indexPath: IndexPath) -> String {
         guard let date = newsList.count > indexPath.row ? newsList[indexPath.row].publishedAt : nil else {
-            return nil
+            return "Date Not Found"
         }
 
         let onlyDate = String(date.split(separator: "T").first ?? "")
         let dateFormatted = onlyDate.convertDate(fromFormat: "yyyy-MM-dd", toFormat: "MM/dd/yyyy")
 
-        return dateFormatted
+        return dateFormatted ?? "Date Not Found"
     }
 
     /// Get description of a news
     ///
     /// - Parameter indexPath: position of news on tableView
     /// - Returns: news' description
-    func newsSourceName(at indexPath: IndexPath) -> String? {
-        return newsList.count > indexPath.row ? newsList[indexPath.row].source?.name : nil
+    func newsSourceName(at indexPath: IndexPath) -> String {
+        return newsList.count > indexPath.row ?
+            newsList[indexPath.row].source?.name  ?? "Source Not Found" : "Source Not Found"
     }
 
     /// Get thumbnail URL of a news

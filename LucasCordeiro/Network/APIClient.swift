@@ -36,12 +36,12 @@ class APIClient {
     ///
     /// - Parameters:
     ///   - completion: completion called after finishing request
-    static func listNews(country: String,
-                         pageSize: Int,
+    static func listNews(pageSize: Int,
                          page: Int,
+                         sourceId: String?,
                          completion: @escaping (Result<NewsResult>) -> Void) {
         let jsonDecoder = JSONDecoder()
-        let route = APIRouter.listNews(country: country, pageSize: pageSize, page: page)
+        let route = APIRouter.listNews(pageSize: pageSize, page: page, sourceId: sourceId)
 
         performRequest(route: route, decoder: jsonDecoder, completion: completion)
     }
