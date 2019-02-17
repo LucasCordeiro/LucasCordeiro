@@ -80,9 +80,9 @@ extension SourceViewController: UITableViewDataSource {
                 return UITableViewCell()
         }
 
-        let sourceName = viewModel.sourceName(at: indexPath) ?? "Name Not Found"
-        let sourceDescription = viewModel.sourceDescription(at: indexPath) ?? "Description Not Found"
-        let sourceUrl = viewModel.sourceUrl(at: indexPath) ?? "URL Not Found"
+        let sourceName = viewModel.sourceName(at: indexPath)
+        let sourceDescription = viewModel.sourceDescription(at: indexPath)
+        let sourceUrl = viewModel.sourceUrl(at: indexPath)
 
         cell.configureCell(sourceName: sourceName,
                            sourceDescription: sourceDescription,

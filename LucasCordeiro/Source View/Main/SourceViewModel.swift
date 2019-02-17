@@ -63,24 +63,30 @@ class SourceViewModel: NSObject {
     ///
     /// - Parameter indexPath: position of source on tableView
     /// - Returns: source's name
-    func sourceName(at indexPath: IndexPath) -> String? {
-        return sourceList.count > indexPath.row ? sourceList[indexPath.row].name : nil
+    func sourceName(at indexPath: IndexPath) -> String {
+        return sourceList.count > indexPath.row
+            ? sourceList[indexPath.row].name ?? "Title Not Found"
+            : "Title Not Found"
     }
 
     /// Get description of a source
     ///
     /// - Parameter indexPath: position of source on tableView
     /// - Returns: source's description
-    func sourceDescription(at indexPath: IndexPath) -> String? {
-        return sourceList.count > indexPath.row ? sourceList[indexPath.row].sourceDescription : nil
+    func sourceDescription(at indexPath: IndexPath) -> String {
+        return sourceList.count > indexPath.row
+            ? sourceList[indexPath.row].sourceDescription ?? "Description Not Found"
+            : "Description Not Found"
     }
 
     /// Get URL of a source
     ///
     /// - Parameter indexPath: position of source on tableView
     /// - Returns: source's URL
-    func sourceUrl(at indexPath: IndexPath) -> String? {
-        return sourceList.count > indexPath.row ? sourceList[indexPath.row].url : nil
+    func sourceUrl(at indexPath: IndexPath) -> String {
+        return sourceList.count > indexPath.row
+            ? sourceList[indexPath.row].url ?? "URL Not Found"
+            : "URL Not Found"
     }
 
     /// Get ID of a source
