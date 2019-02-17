@@ -54,9 +54,11 @@ class ListViewController: UIViewController {
     //
     // MARK: - Configuration Methods -
     private func configureTableView() {
-        let nib = UINib(nibName: "NewsTableViewCell", bundle: nil)
+        let newsNib = UINib(nibName: "NewsTableViewCell", bundle: nil)
+        tableView.register(newsNib, forCellReuseIdentifier: NewsTableViewCell.viewDescription())
 
-        tableView.register(nib, forCellReuseIdentifier: NewsTableViewCell.viewDescription())
+        let loadingNib = UINib(nibName: "LoadingTableViewCell", bundle: nil)
+        tableView.register(loadingNib, forCellReuseIdentifier: LoadingTableViewCell.viewDescription())
 
         tableView.emptyDataSetSource = self
         tableView.emptyDataSetDelegate = self
@@ -72,6 +74,17 @@ extension ListViewController: UITableViewDelegate {
 //
 // MARK: - UITableViewDataSource Extension -
 extension ListViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if viewModel?.isLoadingSection(at: indexPath) ?? false {
+            viewModel?.paginateNews(completion: { [weak self] (_, _) in
+                guard let strongSelf = self else {
+                    return
+                }
+                
+                strongSelf.tableView.reloadData()
+            })
+        }
+    }
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel?.numberOfSection() ?? 0
     }
@@ -81,28 +94,41 @@ extension ListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier:
-            NewsTableViewCell.viewDescription(), for: indexPath) as? NewsTableViewCell else {
-            assertionFailure("No cell registred with \(NewsTableViewCell.viewDescription()) identifier registred")
 
-            return UITableViewCell()
+
+        if viewModel?.isLoadingSection(at: indexPath) ?? false {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier:
+                LoadingTableViewCell.viewDescription(), for: indexPath) as? LoadingTableViewCell else {
+                    assertionFailure("No cell registred with \(LoadingTableViewCell.viewDescription()) identifier registred")
+                    
+                    return UITableViewCell()
+            }
+            
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier:
+                NewsTableViewCell.viewDescription(), for: indexPath) as? NewsTableViewCell else {
+                assertionFailure("No cell registred with \(NewsTableViewCell.viewDescription()) identifier registred")
+
+                return UITableViewCell()
+            }
+
+            if let viewModel = viewModel {
+                let newsTitle = viewModel.newsTitle(at: indexPath)
+                let newsDescription = viewModel.newsDescription(at: indexPath)
+                let newsDate = viewModel.newsDate(at: indexPath)
+                let newsSourceName = viewModel.newsSourceName(at: indexPath)
+                let newsThumbUrl = viewModel.newsThumbUrl(at: indexPath)
+
+                cell.configureCell(newsTitle: newsTitle,
+                                   newsDescription: newsDescription,
+                                   newsDate: newsDate,
+                                   newsSourceName: newsSourceName,
+                                   newsImageURL: newsThumbUrl)
+            }
+
+            return cell
         }
-
-        if let viewModel = viewModel {
-            let newsTitle = viewModel.newsTitle(at: indexPath)
-            let newsDescription = viewModel.newsDescription(at: indexPath)
-            let newsDate = viewModel.newsDate(at: indexPath)
-            let newsSourceName = viewModel.newsSourceName(at: indexPath)
-            let newsThumbUrl = viewModel.newsThumbUrl(at: indexPath)
-
-            cell.configureCell(newsTitle: newsTitle,
-                               newsDescription: newsDescription,
-                               newsDate: newsDate,
-                               newsSourceName: newsSourceName,
-                               newsImageURL: newsThumbUrl)
-        }
-
-        return cell
     }
 }
 

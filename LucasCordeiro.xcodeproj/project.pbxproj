@@ -32,6 +32,9 @@
 		AE7A11D92219B41B009DE984 /* SourceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7A11D82219B41B009DE984 /* SourceViewModel.swift */; };
 		AE7A11DC2219B449009DE984 /* SourceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7A11DA2219B449009DE984 /* SourceTableViewCell.swift */; };
 		AE7A11DD2219B449009DE984 /* SourceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7A11DB2219B449009DE984 /* SourceTableViewCell.xib */; };
+		AE7A11E22219DD2B009DE984 /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7A11E02219DD2B009DE984 /* LoadingTableViewCell.swift */; };
+		AE7A11E32219DD2B009DE984 /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7A11E12219DD2B009DE984 /* LoadingTableViewCell.xib */; };
+		AE7A11E52219DEBD009DE984 /* loadingAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = AE7A11E42219DEBD009DE984 /* loadingAnimation.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +87,9 @@
 		AE7A11D82219B41B009DE984 /* SourceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceViewModel.swift; sourceTree = "<group>"; };
 		AE7A11DA2219B449009DE984 /* SourceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceTableViewCell.swift; sourceTree = "<group>"; };
 		AE7A11DB2219B449009DE984 /* SourceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SourceTableViewCell.xib; sourceTree = "<group>"; };
+		AE7A11E02219DD2B009DE984 /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
+		AE7A11E12219DD2B009DE984 /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableViewCell.xib; sourceTree = "<group>"; };
+		AE7A11E42219DEBD009DE984 /* loadingAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadingAnimation.json; sourceTree = "<group>"; };
 		CDC6D8B12344385362E7BF4C /* Pods-LucasCordeiro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LucasCordeiro.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LucasCordeiro/Pods-LucasCordeiro.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,6 +163,7 @@
 			children = (
 				AE7A11D12219B3C0009DE984 /* Source View */,
 				AE7A11A822178F11009DE984 /* List View */,
+				AE7A11DE2219DBA9009DE984 /* Table Cells */,
 				AE7A11B522179449009DE984 /* Network */,
 				AE7A11BC22183486009DE984 /* Models */,
 				AE7A11A722178EE8009DE984 /* Supporting Files */,
@@ -201,7 +208,6 @@
 			isa = PBXGroup;
 			children = (
 				AE7A11AE22178F7A009DE984 /* Main */,
-				AE7A11AD22178F6D009DE984 /* News Cell */,
 			);
 			path = "List View";
 			sourceTree = "<group>";
@@ -271,6 +277,7 @@
 		AE7A11C922186A9D009DE984 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				AE7A11E42219DEBD009DE984 /* loadingAnimation.json */,
 				AE7A11CA22186AD1009DE984 /* imageLoading.json */,
 			);
 			path = Animations;
@@ -280,7 +287,6 @@
 			isa = PBXGroup;
 			children = (
 				AE7A11D22219B3D9009DE984 /* Main */,
-				AE7A11D32219B3DF009DE984 /* Cells */,
 			);
 			path = "Source View";
 			sourceTree = "<group>";
@@ -295,13 +301,32 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		AE7A11D32219B3DF009DE984 /* Cells */ = {
+		AE7A11D32219B3DF009DE984 /* Source Cells */ = {
 			isa = PBXGroup;
 			children = (
 				AE7A11DB2219B449009DE984 /* SourceTableViewCell.xib */,
 				AE7A11DA2219B449009DE984 /* SourceTableViewCell.swift */,
 			);
-			path = Cells;
+			path = "Source Cells";
+			sourceTree = "<group>";
+		};
+		AE7A11DE2219DBA9009DE984 /* Table Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AE7A11DF2219DD15009DE984 /* Loading Cell */,
+				AE7A11D32219B3DF009DE984 /* Source Cells */,
+				AE7A11AD22178F6D009DE984 /* News Cell */,
+			);
+			path = "Table Cells";
+			sourceTree = "<group>";
+		};
+		AE7A11DF2219DD15009DE984 /* Loading Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AE7A11E12219DD2B009DE984 /* LoadingTableViewCell.xib */,
+				AE7A11E02219DD2B009DE984 /* LoadingTableViewCell.swift */,
+			);
+			path = "Loading Cell";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -413,9 +438,11 @@
 			files = (
 				AE7A118422178D95009DE984 /* LaunchScreen.storyboard in Resources */,
 				AE7A11CB22186AD1009DE984 /* imageLoading.json in Resources */,
+				AE7A11E32219DD2B009DE984 /* LoadingTableViewCell.xib in Resources */,
 				AE7A11D52219B3F7009DE984 /* SourceView.storyboard in Resources */,
 				AE7A11AC22178F68009DE984 /* ListView.storyboard in Resources */,
 				AE7A11B222178FD1009DE984 /* NewsTableViewCell.xib in Resources */,
+				AE7A11E52219DEBD009DE984 /* loadingAnimation.json in Resources */,
 				AE7A11DD2219B449009DE984 /* SourceTableViewCell.xib in Resources */,
 				AE7A118122178D95009DE984 /* Assets.xcassets in Resources */,
 			);
@@ -528,6 +555,7 @@
 				AE7A11CF2218D7E5009DE984 /* NewsSourceCM.swift in Sources */,
 				AE7A11BF2218350C009DE984 /* NewsCM.swift in Sources */,
 				AE7A11B122178FD1009DE984 /* NewsTableViewCell.swift in Sources */,
+				AE7A11E22219DD2B009DE984 /* LoadingTableViewCell.swift in Sources */,
 				AE7A11B92217946D009DE984 /* APIClient.swift in Sources */,
 				AE7A11BB22179704009DE984 /* ConstantCenter.swift in Sources */,
 				AE7A11D72219B407009DE984 /* SourceViewController.swift in Sources */,
