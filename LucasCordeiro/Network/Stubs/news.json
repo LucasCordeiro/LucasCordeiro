@@ -1,0 +1,58 @@
+{
+    "status": "ok",
+    "totalResults": 4,
+    "articles": [
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC News",
+            "title": "Senator to probe 'talk on ousting Trump'",
+            "description": "The pledge comes after an ex-acting FBI chief recalls discussions on removing the president.",
+            "url": "http://www.bbc.co.uk/news/world-us-canada-47274182",
+            "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/529C/production/_105684112_052289617-1.jpg",
+            "publishedAt": "2019-02-17T22:10:12Z",
+            "content": "Image copyrightReutersImage caption\r\n Senator Lindsey Graham said he was \"stunned\" by the latest comments by Andrew McCabe\r\nThe chairman of the US Senate Judiciary Committee has vowed to get to the bottom of allegations that discussions were held in 2017 on r… [+3907 chars]"
+        },
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC News",
+            "title": "Pakistan rolls out red carpet for Saudi prince",
+            "description": "Imran Khan needs Saudi money to stave off an economic bail-out - but this is not a one-way relationship.",
+            "url": "http://www.bbc.co.uk/news/world-asia-47255560",
+            "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/17F3C/production/_105680189_2513ab25-4a4a-4ec8-a907-cc55cab3ab42.jpg",
+            "publishedAt": "2019-02-17T18:08:41Z",
+            "content": "Image copyrightAFP PHOTO / PAKISTAN PRESS INFORMATION DEPARTMENTImage caption\r\n This is the Saudi crown prince's first visit to Pakistan since assuming that role\r\nFor a country running out of foreign reserves, facing a yawning current account deficit and figh… [+7112 chars]"
+        },
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC News",
+            "title": "Miners arrested at 'lawless' rescue site",
+            "description": "More than 60 are held as Liberian authorities seek to restore order at a mine where dozens are trapped.",
+            "url": "http://www.bbc.co.uk/news/world-africa-47272377",
+            "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/4847/production/_105630581_gettyimages-473717632.jpg",
+            "publishedAt": "2019-02-17T17:15:59Z",
+            "content": "Image copyrightGetty ImagesImage caption\r\n Liberia is rich in mineral deposits - and full of illicit mines\r\nMore than 60 miners, some armed, have been arrested at an illegal gold mine in north-eastern Liberia where around 40 people remain trapped in a collaps… [+1477 chars]"
+        },
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC News",
+            "title": "Polish PM cancels trip amid Holocaust row",
+            "description": "Mateusz Morawiecki will not now visit Israel, after PM Benjamin Netanyahu said \"Poles co-operated\".",
+            "url": "http://www.bbc.co.uk/news/world-europe-47272718",
+            "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/9806/production/_105681983_polandisrael2.jpg",
+            "publishedAt": "2019-02-17T16:28:27Z",
+            "content": "Image copyrightReutersImage caption\r\n Prime Minister Mateusz Morawiecki (L) met Mr Netanyahu this month\r\nPM Mateusz Morawiecki has cancelled a trip to Israel following comments on the Holocaust by Israeli counterpart Benjamin Netanyahu.\r\nMr Netanyahu was quot… [+2588 chars]"
+        }
+    ]
+}
