@@ -20,6 +20,7 @@ class NewsTableViewCell: UITableViewCell {
     @IBOutlet weak var imageLoadingView: LOTAnimationView!
     @IBOutlet weak var sourceLabelOutlet: UILabel!
     @IBOutlet weak var dateLabelOutlet: UILabel!
+    @IBOutlet weak var errorThumbImageView: UIImageView!
 
     //
     // MARK: - Life Cycle Methods -
@@ -44,6 +45,7 @@ class NewsTableViewCell: UITableViewCell {
         imageLoadingView.loopAnimation = true
         imageLoadingView.play()
 
+        errorThumbImageView.isHidden = true
         imageViewOutlet.sd_setImage(with: newsImageURL) { [weak self] (_, error, _, _) in
             guard let strongSelf = self else {
                 return
@@ -53,7 +55,9 @@ class NewsTableViewCell: UITableViewCell {
             strongSelf.imageLoadingView.stop()
 
             if error != nil {
-                strongSelf.imageViewOutlet.image = #imageLiteral(resourceName: "brokenImage")
+                strongSelf.errorThumbImageView.isHidden = false            } else {
+                strongSelf.errorThumbImageView.isHidden = true
+                strongSelf.imageViewOutlet.contentMode = .scaleToFill
             }
         }
     }

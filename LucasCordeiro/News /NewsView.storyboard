@@ -36,7 +36,9 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JLr-zf-vA6" customClass="L">
                                 <rect key="frame" x="0.0" y="20" width="375" height="583"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="mSN-ng-OXs" id="wW6-Sf-x2z"/>
                                     <outlet property="delegate" destination="mSN-ng-OXs" id="U9g-fh-cCl"/>
@@ -64,7 +66,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.02079348675" green="0.073610142219999994" blue="0.19385937340000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="AVQ-6e-HCx" firstAttribute="top" secondItem="JLr-zf-vA6" secondAttribute="top" id="56w-sj-Z7F"/>
                             <constraint firstItem="JLr-zf-vA6" firstAttribute="leading" secondItem="uKo-OI-eaK" secondAttribute="leading" id="6jF-ZF-yxF"/>
@@ -116,7 +118,7 @@
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.02079348675" green="0.073610142219999994" blue="0.19385937340000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="qAQ-uW-5rS" firstAttribute="top" secondItem="uQX-8E-hRv" secondAttribute="top" id="3oT-kd-89D"/>
                             <constraint firstAttribute="bottom" secondItem="X4x-iq-BAu" secondAttribute="bottom" id="6CO-ge-K2A"/>
