@@ -58,7 +58,8 @@ extension LOTAnimationView {
 
         self.loopAnimation = loopAnimation
         self.play()
-
+        self.loopAnimation = loopAnimation
+        self.play()
         self.isHidden = false
         self.superview?.isHidden = false
         self.alpha = 0.0
@@ -74,10 +75,10 @@ extension LOTAnimationView {
         UIView.animate(withDuration: 0.5, animations: {
             self.alpha = 0.0
             self.superview?.alpha = 0.0
-        }) { (_) in
+        }, completion: { (_) in
             self.stop()
             self.superview?.isHidden = true
             self.isHidden = true
-        }
+        })
     }
 }

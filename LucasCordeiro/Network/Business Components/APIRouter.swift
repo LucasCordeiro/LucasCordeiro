@@ -28,10 +28,14 @@ enum APIRouter: URLRequestConvertible {
     private var path: String {
         switch self {
         case .listNews(let pageSize, let page, let sourceId):
-            return "top-headlines?&pageSize=\(pageSize)&page=\(page)" +
-            (sourceId != nil ? "&sources=\(sourceId ?? "")" : "")
+            return ServerInfo.isStub
+                ? "listNews"
+                : "top-headlines?&pageSize=\(pageSize)&page=\(page)" +
+                (sourceId != nil ? "&sources=\(sourceId ?? "")" : "")
         case .listSources(let country):
-            return "sources?country=\(country)"
+            return ServerInfo.isStub
+            ? "listSources"
+            : "sources?country=\(country)"
         }
     }
 
@@ -50,9 +54,16 @@ enum APIRouter: URLRequestConvertible {
         var url: URL
 
         switch self {
-        case .listNews,
-             .listSources:
-            let urlString = ServerInfo.ServiceServer.newsApiUrl + path +
+        case .listNews:
+            let urlString = ServerInfo.isStub
+                ? "listNews"
+                : ServerInfo.ServiceServer.newsApiUrl + path +
+                ServerInfo.ServiceServer.suffixURL
+            url = try urlString.asURL()
+        case .listSources:
+            let urlString = ServerInfo.isStub
+                ? "listSources"
+                : ServerInfo.ServiceServer.newsApiUrl + path +
                 ServerInfo.ServiceServer.suffixURL
             url = try urlString.asURL()
         }

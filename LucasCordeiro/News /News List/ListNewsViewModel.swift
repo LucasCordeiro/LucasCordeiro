@@ -7,14 +7,17 @@
 //
 
 import Foundation
+import OHHTTPStubs
 
 class ListNewsViewModel: NSObject {
 
     //
+    // MARK: - Public Properties -
+    var hasPagination = false
+
+    //
     // MARK: - Local Properties -
     private var newsList: [News] = []
-
-    private var hasPagination = false
 
     private var pageSize = 4
 
@@ -25,6 +28,7 @@ class ListNewsViewModel: NSObject {
     init(sourceId: String) {
         super.init()
 
+        self.initializeStubs()
         self.sourceId = sourceId
     }
 
@@ -181,5 +185,20 @@ class ListNewsViewModel: NSObject {
         pageCount.round(.up)
 
         return Int(pageCount)
+    }
+}
+
+extension ListNewsViewModel: StubViewModelDelegate {
+    func initializeStubs() {
+
+        if ServerInfo.isStub {
+            let listNewsPath = "listNews"
+            let listNewsJSONPath = "news.json"
+
+            stub(condition: pathEndsWith(listNewsPath)) { _ in
+                let stubPath = OHPathForFile(listNewsJSONPath, type(of: self))
+                return fixture(filePath: stubPath!, headers: ["Content-Type": "application/json"])
+            }
+        }
     }
 }

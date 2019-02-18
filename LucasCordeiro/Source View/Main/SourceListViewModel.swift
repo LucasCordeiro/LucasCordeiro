@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import OHHTTPStubs
 
 class SourceListViewModel: NSObject {
 
@@ -15,6 +16,14 @@ class SourceListViewModel: NSObject {
     private var sourceList: [NewsSource] = []
 
     private var country = "us"
+
+    //
+    // MARK: - Life Cycle Methods -
+    override init() {
+        super.init()
+
+        initializeStubs()
+    }
 
     //
     // MARK: - Sources Method -
@@ -95,5 +104,20 @@ class SourceListViewModel: NSObject {
     /// - Returns: source's ID
     func sourceId(at indexPath: IndexPath) -> String? {
         return sourceList.count > indexPath.row ? sourceList[indexPath.row].sourceID : nil
+    }
+}
+
+extension SourceListViewModel: StubViewModelDelegate {
+    func initializeStubs() {
+
+        if ServerInfo.isStub {
+            let listSourcesPath = "listSources"
+            let listSourcesJSONPath = "newsSource.json"
+
+            stub(condition: pathEndsWith(listSourcesPath)) { _ in
+                let stubPath = OHPathForFile(listSourcesJSONPath, type(of: self))
+                return fixture(filePath: stubPath!, headers: ["Content-Type": "application/json"])
+            }
+        }
     }
 }

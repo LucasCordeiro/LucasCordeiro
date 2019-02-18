@@ -17,6 +17,8 @@ struct StubConstant {
 /// Server Infos/links/keys
 struct ServerInfo {
 
+    static var isStub: Bool = false
+
     static let isProduction = true
 
     /// News Api Authentication Key
